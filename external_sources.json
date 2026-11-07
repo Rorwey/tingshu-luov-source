@@ -1,0 +1,7 @@
+{
+    "version": 2,
+    "entry_package": "sources_by_luov",
+    "download_url": "https://raw.githubusercontent.com/<你的GitHub用户名>/<仓库名>/main/sources_by_luov.jar",
+    "update_msg": "听书源合集：① 哔哩哔哩·合集连播（搜索/分类/多P连播 + B站「合集(ugc_season)」整集合播）；② 央广电台（央广/国广 国家广播 19 套直播：中国之声、音乐之声、经济之声等）；③ 央广地方广播（北京/上海/广东等 30 省电台直播）",
+    "support_url": ""
+}
