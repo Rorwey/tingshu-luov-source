@@ -12,13 +12,13 @@
 
 `sources_by_luov.jar` 是**本仓库唯一新编写、长期维护**的源，相对 B 站官方内容做了**兼容性保留 + 功能新增**：
 
-- **订阅标题**：本 luov 订阅在 App「源管理」页显示的标题为 **「订阅源：听书+直播源」**（由 `SourceEntry.getDesc()` 提供，App 自动加「订阅源：」前缀）。该订阅下包含两个子源（见下）。
-- **哔哩（新）（B 站子源）** —— App 源列表中的显示名即为「哔哩（新）」。`getSourceId()` 保持不变，因此更新时原地替换、不会产生重复源。
-  - 保留并兼容原有能力：搜索、分类（6 个标签）、多 P 视频连播；
-  - **新增「合集」连播**：支持 B 站 `ugc_season` 合集（原 App 只能抓单集、分P，无法合集连播），自动展开合集内每一集、以及每集合的每个分 P，生成可连续播放的条目。
+- **订阅标题**：本订阅在 App「源管理」页显示的标题为 **「订阅源：听书+直播源」**
+- **哔哩（新）（B 站子源）** —— App 源列表中的显示名即为「哔哩（新）」。
+  - 保留并兼容原有能力：搜索、分类（6 个标签）、合集视频连播；
+  - 相比于旧的官方源，**新增「合集」连播**：支持 B 站 `ugc_season` 合集（原 App 只能抓单集、分P，无法合集连播），自动展开合集内每一集、以及每集合的每个分 P，生成可连续播放的条目。
 
 > ⚠️ **重要：请勿同时启用原作者的官方「哔哩哔哩」源。** 本「哔哩（新）」是官方旧源的**超集**（旧功能全保留 + 新增合集连播），且两者使用完全相同的 B 站搜索接口与域名。若同时启用，App 在全局搜索时会对同一关键词向 B 站发两条重复请求，触发风控限流 / 结果归属竞态，表现为「其中一个哔哩源搜索空白、时好时坏」。请在本仓库导入的 `sources_by_eprendre` 等第三方源中，**关闭或删除官方旧「哔哩哔哩」源**，仅保留本「哔哩（新）」即可。
-- **央广 / 地方广播（合并为一个源）**：国家广播 19 套（央广 16 套 + 国广 CRI 3 套）+ 地方广播 30 省，统一收进同一个源——分类菜单中「央广」为第一个分类，其后依次各省；电台均带封面。
+- **央广 / 地方广播**：国家广播 19 套（央广 16 套 + 国广 CRI 3 套）+ 地方广播 30 省，统一收进同一个源——分类菜单中「央广」为第一个分类，其后依次各省；电台均带封面。
 
 导入地址：
 
@@ -28,24 +28,24 @@ https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sourc
 
 文件说明：
 
-- `external_sources.json`：luov 源的订阅入口（version = 6，App 检测到版本号变化会自动重新拉取并覆盖安装）。
+- `external_sources.json`：luov 源的订阅入口。
 - `sources_by_luov.jar`：luov 源解析包。
 
 > 参考与致谢：本 luov 源基于原作者 **eprendre** 的《我的听书》框架与示例编写（自定义源项目 `CustomSources`、源编写逻辑均来源于此），借助AI协助。参考项目地址：https://github.com/eprendre/tingshu 。本仓库仅在此框架基础上新增合集连播与央广 / 地方广播直播能力，著作权尊重原框架作者。
 
 ---
 
-## 二、其余三个第三方源（原作者维护，现已停止维护）
+## 二、其余三个第三方源（原作者已停止维护）
 
 以下三个 jar 为**第三方 / 原作者**提供，**本仓库仅收录备份**，其原始地址如下：
 
-| 源 | 说明 | 原始地址（原作者的 README 顶部仓库） |
+| 源 | 说明 | 原始地址（不一定是官方）  |
 | --- | --- | --- |
 | ting29 | 听书网合集（29听书 / 恋听 / 乐听 / 麒麟 / 275 / 有听 / 听13 / 爱听书） | https://github.com/liaozhu913/tingshu-ting29-source |
-| eprendre | 原作者 eprendre 维护的多站听书 / 电台合集（哔哩哔哩、懒人听书、酷我、CCTV 等 33 个源） | https://github.com/eprendre/tingshu |
-| shun | 原作者生态下的第三方整合听书源 | https://github.com/eprendre/tingshu |
+| eprendre | 原作者 eprendre 维护的多站听书 / 电台合集（哔哩哔哩、懒人听书、酷我、CCTV 等 33 个源） | http://ywbk.cc/306.html |
+| shun | 原作者生态下的第三方整合听书源 | http://ywbk.cc/306.html |
 
-对应订阅入口（**在 App「自定义源管理 → 添加订阅」中直接填入下方 raw 地址即可**）。注意各 json 的 `download_url` 指向不同：`ting29` 指向**原作者仓库**（保持原样、随作者更新），`eprendre` / `shun` 指向**本仓库托管副本**：
+对应订阅入口（**在 App「自定义源管理 → 添加订阅」中直接填入下方 raw 地址即可**）：
 
 | 源 | 订阅地址（复制到 App 订阅框） | 本地文件（jar + json） |
 | --- | --- | --- |
@@ -53,22 +53,13 @@ https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sourc
 | eprendre | `https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_eprendre.json` | `sources_by_eprendre.jar` + `external_sources_eprendre.json` |
 | shun | `https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_shun.json` | `sources_by_shun.jar` + `external_sources_shun.json` |
 
-为便于统一对照，四个源（含本仓库自维护的 luov）的订阅地址汇总如下：
-
-```text
-luov     https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources.json
-ting29   https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_ting29.json
-eprendre https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_eprendre.json
-shun     https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_shun.json
-```
-
-> 说明：eprendre / shun 原作者项目已**停止维护**（源码大部分失效），本仓库仅作存档与离线备用；ting29 仍由其作者维护。
+> 说明：eprendre / shun 原作者项目已**停止维护**（源码大部分失效），本仓库仅作存档与离线备用；ting29 仍由其作者维护，本仓库仅做备份。
 
 ---
 
 ## 三、App 获取与参考来源
 
-本仓库的源需配合《我的听书》App（包名 `com.github.eprendre.tingshu`）使用。本仓库所使用的 App 安装包获取自：http://ywbk.cc/306.html （请自行甄别来源安全性）。
+本仓库的源需配合《我的听书》App（包名 `com.github.eprendre.tingshu`）使用。本仓库所使用的 App 安装包获取自：https://pan.lanzoux.com/b873905 （官方托管地址）。
 
 自定义源编写所参考的原作者框架与示例，见第一节「参考与致谢」：https://github.com/eprendre/tingshu 。
 
