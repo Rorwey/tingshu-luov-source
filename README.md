@@ -45,11 +45,22 @@ https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sourc
 | eprendre | 原作者 eprendre 维护的多站听书 / 电台合集（哔哩哔哩、懒人听书、酷我、CCTV 等 33 个源） | https://github.com/eprendre/tingshu |
 | shun | 原作者生态下的第三方整合听书源 | https://github.com/eprendre/tingshu |
 
-对应订阅入口（如需从本仓库导入，`download_url` 已指向本仓库托管副本）：
+对应订阅入口（**在 App「自定义源管理 → 添加订阅」中直接填入下方 raw 地址即可**）。注意各 json 的 `download_url` 指向不同：`ting29` 指向**原作者仓库**（保持原样、随作者更新），`eprendre` / `shun` 指向**本仓库托管副本**：
 
-- `external_sources_ting29.json` + `sources_by_ting29.jar`
-- `external_sources_eprendre.json` + `sources_by_eprendre.jar`
-- `external_sources_shun.json` + `sources_by_shun.jar`
+| 源 | 订阅地址（复制到 App 订阅框） | 本地文件（jar + json） |
+| --- | --- | --- |
+| ting29 | `https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_ting29.json` | `sources_by_ting29.jar` + `external_sources_ting29.json` |
+| eprendre | `https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_eprendre.json` | `sources_by_eprendre.jar` + `external_sources_eprendre.json` |
+| shun | `https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_shun.json` | `sources_by_shun.jar` + `external_sources_shun.json` |
+
+为便于统一对照，四个源（含本仓库自维护的 luov）的订阅地址汇总如下：
+
+```text
+luov     https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources.json
+ting29   https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_ting29.json
+eprendre https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_eprendre.json
+shun     https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_shun.json
+```
 
 > 说明：eprendre / shun 原作者项目已**停止维护**（源码大部分失效），本仓库仅作存档与离线备用；ting29 仍由其作者维护。
 
