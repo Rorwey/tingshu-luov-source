@@ -1,7 +1,7 @@
 {
-    "version": 8,
+    "version": 9,
     "entry_package": "sources_by_luov",
     "download_url": "https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/sources_by_luov.jar",
-    "update_msg": "听书+直播源：① 哔哩（新）（搜索/分类/多P连播 + B站「合集(ugc_season)」整集合播）；② 央广/地方广播（修复中央台只有2个能播：播放时动态注入最新鉴权签名，19套全可用；江西广电自营6频率 + 南昌广电官网2条直连，市级按车牌字母序）；③ 央视/地方卫视（伴音才标注「（伴音）」；新增南昌广播电视台3个官方视频流，不标注、不加密、带台标封面；央视因 ChinaDRM 加密暂不接入）",
+    "update_msg": "听书+直播源 v9：① 中央台列表去重（national 接口返回2个重复分类，38条→19套）+ 动态签名加缓存兜底，弱网下不再退化成403裸链；② 江西广播补充央广CDN备用线路3条 + 九江交通广播（赣G），省级/市级全部活性验证；③ 官网优先核查江西省级电视：鉴权链已逆出但播放CDN 403，按GitHub开源算法36种组合复现仍403，按约定放弃（详见 STREAMS.md）；④ 新增 STREAMS.md 直播源与封面核验手册；⑤ 哔哩（新）/南昌电视3频道/卫视伴音保持不变",
     "support_url": ""
 }
