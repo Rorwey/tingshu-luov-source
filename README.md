@@ -31,7 +31,7 @@ https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sourc
 
 文件说明：
 
-- `external_sources.json`：luov 源的订阅入口（当前 version = 13，版本号变化会触发 App 重新拉取）。
+- `external_sources.json`：luov 源的订阅入口（当前 version = 14，版本号变化会触发 App 重新拉取）。
 - `sources_by_luov.jar`：luov 源解析包。
 - `CHANGELOG.md`：**版本更新日志**——从 v2 到当前版本，每个版本的变更内容、台数、jar 体积、对应 commit 与已知短板；文末另列「已实测但不接入」的事项。
 - `STREAMS.md`：**直播源与封面清单 / 核验手册**——所有已接入流的 URL、封面图、签名方式、活性检测结果，以及备选（实测可用但未接入）与已排除流的清单和原因、可复制的核验命令。
