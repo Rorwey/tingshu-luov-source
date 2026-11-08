@@ -32,6 +32,7 @@ https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sourc
 
 - `external_sources.json`：luov 源的订阅入口（当前 version = 11，版本号变化会触发 App 重新拉取）。
 - `sources_by_luov.jar`：luov 源解析包。
+- `CHANGELOG.md`：**版本更新日志**——从 v2 到当前版本，每个版本的变更内容、台数、jar 体积、对应 commit 与已知短板；文末另列「已实测但不接入」的事项。
 - `STREAMS.md`：**直播源与封面清单 / 核验手册**——所有已接入流的 URL、封面图、签名方式、活性检测结果，以及备选（实测可用但未接入）与已排除流的清单和原因、可复制的核验命令。
 
 > 参考与致谢：本 luov 源基于原作者 **eprendre** 的《我的听书》框架与示例编写（自定义源项目 `CustomSources`、源编写逻辑均来源于此），借助AI协助。参考项目地址：https://github.com/eprendre/tingshu 。本仓库仅在此框架基础上新增合集连播与广播 / 电视直播能力，著作权尊重原框架作者。
