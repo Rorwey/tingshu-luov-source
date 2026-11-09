@@ -51,12 +51,6 @@
 | 江西音乐类 | `https://cnvod.cnr.cn/audio2016/default/2014/8/18/1408354248154.jpg` |
 | 南昌新闻综合频率 FM91.7 | `https://www.nctv.net.cn/images/pl/917.jpg` |
 | 南昌交通广播 FM95.1 | `https://www.nctv.net.cn/images/pl/951.jpg` |
-| 南昌新闻综合频道 | `https://www.nctv.net.cn/images/ngxw1.jpg` |
-| 南昌文旅频道 | `https://www.nctv.net.cn/images/ngxw2.jpg` |
-| 南昌资讯频道 | `https://www.nctv.net.cn/images/ngxw3.jpg` |
-| 湖南卫视 | `https://parco-zh.github.io/demo/HNWS.png` |
-| 江西卫视 | `https://www.tvchinese.net/uploads/tv/jiangxi.jpg` |
-| 央视 / 央视频道（备用台标） | `https://www.tvchinese.net/uploads/tv/cctv1.jpg`、`.../cctvnews.jpg` |
 
 央广接口返回的各省台封面走 `other_info6`，缺失回退 `other_info24`（同属 `cnvod.cnr.cn`）。
 未找到九江交通广播官方台标，当前用「江西交通类」封面占位，可随时替换。
@@ -144,47 +138,15 @@ v10 另补衡阳（交通 `5079921`、新闻 `5079970`）、岳阳（交通 `889
 
 ---
 
-## 6. 电视源 `[已接入]`（子源「央视/地方卫视」）
+## 6. 电视源 `[已移除 v15]`
 
-命名规则：**伴音才标注「（伴音）」，真视频流不标注**。
-
-| 分类 | 显示名 | URL | 签名 |
-| --- | --- | --- | --- |
-| 卫视伴音 | 湖南卫视（伴音） | `https://satellitepull.cnr.cn/live/wx32hunws/playlist.m3u8` | 无 |
-| 卫视伴音 | 江西卫视（伴音） | `https://satellitepull.cnr.cn/live/wx32jiangxws/playlist.m3u8` | 无 |
-| 南昌电视 | 南昌新闻综合频道 | `https://live.nctv.net.cn/live/nctv1.m3u8` | 需签名（官网） |
-| 南昌电视 | 南昌文旅频道 | `https://live.nctv.net.cn/live/nctv2.m3u8` | 需签名（官网） |
-| 南昌电视 | 南昌资讯频道 | `https://live.nctv.net.cn/live/nctv3.m3u8` | 需签名（官网） |
-
-南昌官网 `www.nctv.net.cn/live?channel=1..8` 实测均返回同样 5 条（`data-url` + `data-title` + `data-img`），
-无更多频道可挖。
+> **自 v15 起，本源不再包含任何电视内容。** 原「电视直播源」（LocalTV）已整体删除——央视音频版 CDN 在真机实测不可达、南昌 1/2/3 视频流实测失效，且各省级官网真视频流多为 ChinaDRM 加密或播放 CDN 返回 403，无稳定可播电视内容。
+>
+> 之所以此前还能列出的几类电视流（卫视伴音、南昌视频、央视音频版、CGTN 转播等），经实测均不可用或不稳定，故源内仅保留 **B站（哔哩·新）+ 广播（CNR）** 两项。若日后找到可验证的电视源，可重新在源中新增，但当前版本不含。
 
 ---
 
-## 7. 备选：实测可用但**未接入**的央视系流 `[备选]`
-
-来源为 GitHub 聚合清单 `iptv-org/iptv`(`streams/cn.m3u`)、`fanmingming/live` 及官方 CDN。
-以下均通过第 0 节全部 5 项核验（无 `#EXT-X-KEY`、seq 实时滚动），但未写进 jar：
-央视官网 `tv.cctv.com` 现为 ChinaDRM 加密流，按既有约定「需要加密就算了」放弃；
-下列多为第三方转播 / CGTN 国际频道，非官方直连，稳定性无保证，且对纯音频 App 价值有限。
-若日后要启用，直接加进 `LocalTV.kt` 的 `stations` 列表即可（真视频流 `audioOnly=false`、不标注）。
-
-| 频道 | URL | 活性 |
-| --- | --- | --- |
-| CCTV-1（voc.com.cn 转播） | `https://liveplay-srs.voc.com.cn/hls/tv/134_180adf.m3u8` | LIVE 8129 → 8140 |
-| CGTN 英语 | `https://0472.org/hls/cgtn.m3u8` | LIVE |
-| CGTN 纪录 | `https://0472.org/hls/cgtnd.m3u8` | LIVE |
-| CGTN 阿语 | `https://0472.org/hls/cgtna.m3u8` | LIVE |
-| CGTN 西语 | `https://0472.org/hls/cgtnx.m3u8` | LIVE |
-| CGTN Global Biz | `https://fastlive.cctvplus.com/out/v1/2b3d8a0c805d437f9dc85b764c2ac599/index.m3u8` | LIVE |
-| China Travel | `https://fastlive.cctvplus.com/out/v1/ca6f9297b7314a63959435028af287fc/index.m3u8` | LIVE |
-| Discovering China | `https://fastlive.cctvplus.com/out/v1/8442c3bfd4c64a3984389328f6087879/index.m3u8` | LIVE |
-
-`https://0472.org/hls/cgtnf.m3u8`（法语）、`cgtne.m3u8`（俄语）取不到 seq，标 UNKNOWN，不列入。
-
----
-
-## 8. 已实测排除 `[不可用]`（避免重复踩坑）
+## 7. 已实测排除 `[不可用]`（避免重复踩坑）
 
 | 对象 | 结论 |
 | --- | --- |
@@ -199,7 +161,7 @@ v10 另补衡阳（交通 `5079921`、新闻 `5079970`）、岳阳（交通 `889
 
 ---
 
-## 9. 全国广播覆盖（v14：949 台 / 31 个省级行政区 / 251 个地市）`[已接入]`
+## 8. 全国广播覆盖（v14：949 台 / 31 个省级行政区 / 251 个地市）`[已接入]`
 
 > **排序规则（v14 起）**：数据表内每一省均按「省台（含省级广播）→ 省会市台（车牌 A）→ 其余地市按机动车号牌字母序（B/C/D…）」排列，同城市下辖区县聚拢在该城市之后。此前（v11–v13）是按蜻蜓接口原始返回序入表，导致地市多排在最前、且未按车牌序。同时 v14 修正了海南（3250）/ 广西（3241）两省内容整组对调的分类归属 bug。
 
@@ -282,7 +244,7 @@ GET https://rapi.qingting.fm/categories/{分类id}/channels?page=N
 
 ---
 
-## 10. 快速核验命令
+## 9. 快速核验命令
 
 ```bash
 # 1) 主列表
@@ -304,86 +266,4 @@ curl -sk 'https://www.nctv.net.cn/live?channel=2' | grep -o 'data-url="[^"]*"'
 
 本仓库另附的 Python 核验脚本思路见第 0 节；活性检测务必隔 8 秒取双快照，
 仅凭 HTTP 200 会把 CDN 静态缓存壳误判为可用。
-
----
-
-## 11. 电视直播源（v12：央视 + 全国各省卫视伴音）`[已接入]`
-
-电视源「LocalTV」在 v12 重构为与广播源同构的分级：菜单首项「央视」，其后 31 个省级行政区（含天津，与广播同序）。
-
-### 11.1 全国各省卫视伴音（央广 CDN 卫星电视纯音频版）
-
-来源：公开 IPTV 清单 `guozu616/iptv` 的「电视伴音」表。本质是各省级卫视的**纯音频版**，
-走央广 CDN `https://satellitepull.cnr.cn/live/{code}/playlist.m3u8`（与广播源同域名，免签名）。
-master 列表返回 `#EXT-X-STREAM-INF`（BANDWIDTH ~220k，确认纯音频），其子列表经 `100ycdn.com`
-下发并带 `wsSession/wsIPSercert` 动态签名；播放器先取 master 再取带签名子列表，链路与已上线的湖南/江西卫视伴音一致。
-
-v12 实测（2026-11-08，本开发环境）：**31 个省级卫视伴音 code 全部 HTTP 200 + 合法 m3u8**；
-抽 8 省（北京/内蒙古/江苏/湖北/广东/四川/新疆/西藏）做 8 秒双快照，`#EXT-X-MEDIA-SEQUENCE` 稳定 +1（真·直播）。
-
-| 省/市 | 卫视伴音（名称标「（伴音）」） | code | 备注 |
-| --- | --- | --- | --- |
-| 北京 | 北京卫视 | `wxbtv` | |
-| 天津 | 天津卫视 | `wxtjws` | |
-| 河北 | 河北卫视 | `wxhebws` | |
-| 山西 | 山西卫视 | `wxssxws` | |
-| 内蒙古 | 内蒙古卫视 | `wx32nmgws` | |
-| 辽宁 | 辽宁卫视 | `wxlnws` | |
-| 吉林 | 吉林卫视 | `wxjlws` | 另含城市卫视「延边卫视 `wxybws`」 |
-| 黑龙江 | 黑龙江卫视 | `wx32hljws` | |
-| 上海 | 东方卫视 | `wx32dfws` | 上海无本省卫视，由东方卫视覆盖 |
-| 江苏 | 江苏卫视 | `wx32jsws` | |
-| 浙江 | 浙江卫视 | `wxzjws` | |
-| 安徽 | 安徽卫视 | `wxahws` | |
-| 福建 | 东南卫视 | `wx32fjws` | 福建无本省卫视，由东南卫视覆盖 |
-| 江西 | 江西卫视 | `wx32jiangxws` | 另含南昌广电 3 个官方视频流（见 11.3） |
-| 山东 | 山东卫视 | `wxsdws` | |
-| 河南 | 河南卫视 | `wxhnws` | |
-| 湖北 | 湖北卫视 | `wx32hubws` | |
-| 湖南 | 湖南卫视 | `wx32hunws` | |
-| 广东 | 广东卫视 | `wxgdws` | 另含城市卫视「深圳卫视 `wxszws`」 |
-| 海南 | 海南卫视 | `wxhainlyws` | |
-| 重庆 | 重庆卫视 | `wxcqws` | |
-| 四川 | 四川卫视 | `wxscws` | |
-| 贵州 | 贵州卫视 | `wx32gzws` | |
-| 西藏 | 西藏卫视 | `wxxzws` | |
-| 陕西 | 陕西卫视 | `wxsxxws` | |
-| 甘肃 | 甘肃卫视 | `wxgsws` | |
-| 青海 | 青海卫视 | `wx32qhws` | |
-| 宁夏 | 宁夏卫视 | `wxnxws` | |
-| 新疆 | 新疆卫视 | `wxxjws` | |
-| 广西 | （无） | — | 卫视伴音 CDN 上查无对应 code，tab 暂空 |
-| 云南 | （无） | — | 卫视伴音 CDN 上查无对应 code，tab 暂空 |
-
-封面：卫视伴音复用广播源各省已验证 200 的台标（`RadioData.provinceCovers`）作兜底；
-南昌视频流用官网 `nctv.net.cn/images/ngxw*.jpg`。
-
-### 11.2 央视分类（CCTV 音频版，名称标「⚠（未验证）」）
-
-央视官网 `tv.cctv.com` 视频链路为 **ChinaDRM 加密**（ExoPlayer 无法直解），在播视频流不可接。
-公开清单里存在 CCTV1–17、CCTV新科动漫、中国教育 CETV1–4 的**音频版**
-（`myalicdn.com` / `wscdns.com` 的 `BR=audio` / `audio.m3u8`）。
-
-**重要限制**：这些音频 CDN（cctv.v.myalicdn.com、cctv5cncc.v.wscdns.com、wstvalic.v.myalicdn.com）
-在**本开发环境 DNS 解析失败、无法连通**，故 v12 仅按用户选择「收录并标未验证」——
-**在你国内真机上可能可播，不可用请直接在 App 内删除对应条目**。央视音频 CDN 不可达属网络环境限制，非代码问题。
-
-### 11.3 江西省内官方视频流（不标注「伴音」）
-
-南昌广播电视台 3 个频道来自官网 `https://www.nctv.net.cn/live?channel=2` 的 data-url：
-
-| 名称 | URL（裸，播放时由 StreamSigner 注入 txSecret/txTime） |
-| --- | --- |
-| 南昌新闻综合频道 | `https://live.nctv.net.cn/live/nctv1.m3u8` |
-| 南昌文旅频道 | `https://live.nctv.net.cn/live/nctv2.m3u8` |
-| 南昌资讯频道 | `https://live.nctv.net.cn/live/nctv3.m3u8` |
-
-裸地址 403，播放时由 `StreamSigner.resolve()` 反查官网注入最新签名（约 30 分钟滚动）。
-视频流在纯音频 App 中只取声音；若个别机型无法解码，可改用官网 `only-audio=1` 伴音版。
-
-### 11.4 为什么省级官网真视频流不接入
-
-v7/v9 已实测：江西广电官网电视鉴权链虽逆出，但播放 CDN（网宿 `MC_VCLOUD_LIVE`）一律 403，
-按开源算法（`linux-jin/TvBox`、恩山论坛）复现 36 种组合仍 403；湖南 vzan、多数省台官网视频流同样
-403 / 需 token。故电视以「卫视伴音（纯音频）」为唯一可稳定播的形态。
 
