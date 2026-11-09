@@ -23,7 +23,6 @@
 
 > 注：电视直播源（LocalTV，原含央视音频版、全国卫视伴音、南昌视频流）已于 **v15 整体移除**——央视音频版 CDN 实测不可达、南昌 1/2/3 视频流实测失效，且各省级官网真视频流多为 ChinaDRM 加密或播放 CDN 返回 403，无稳定可播电视内容，故源内仅保留上述 B 站与广播两项。
 
-
 导入地址：
 
 ```text
@@ -37,7 +36,7 @@ https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sourc
 - `CHANGELOG.md`：**版本更新日志**——从 v2 到当前版本，每个版本的变更内容、台数、jar 体积、对应 commit 与已知短板；文末另列「已实测但不接入」的事项。
 - `STREAMS.md`：**直播源与封面清单 / 核验手册**——所有已接入流的 URL、封面图、签名方式、活性检测结果，以及备选（实测可用但未接入）与已排除流的清单和原因、可复制的核验命令。
 
-> 参考与致谢：本 luov 源基于原作者 **eprendre** 的《我的听书》框架与示例编写（自定义源项目 `CustomSources`、源编写逻辑均来源于此），借助AI协助。参考项目地址：https://github.com/eprendre/tingshu 。本仓库仅在此框架基础上新增合集连播与广播 / 电视直播能力，著作权尊重原框架作者。
+> 参考与致谢：本 luov 源基于原作者 **eprendre** 的《我的听书》框架与示例编写（自定义源项目 `CustomSources`、源编写逻辑均来源于此），借助AI协助。参考项目地址：<https://github.com/eprendre/tingshu> 。本仓库仅在此框架基础上新增合集连播与广播 / 电视直播能力，著作权尊重原框架作者。
 >
 > 广播直链另参考了 GitHub 公开电台清单（`kilvn/iptv`、`hcm82/iptvradio`、`jiqiao/tv`、`iptv-org/iptv`、`fanmingming/live` 等）、江西广电鉴权的公开实现（`linux-jin/TvBox` 江西电视台 PC 官网代理源码、恩山无线论坛相关讨论）与各地广电官网（`www.cnr.cn/gbzb/`、`jxntv.cn`、`www.jxgdw.cn`、`www.nctv.net.cn`）。所有收录的流均**逐条实测**：主列表 → 子列表 → ts 分片 HTTP 200、无 `#EXT-X-KEY` 加密、播放列表 8 秒双快照实时滚动；静态缓存（如湘潭广电）、伪装成 200 的错误响应、停播 / 404 流一律排除。需要鉴权的官方流不硬编码签名，改为播放时动态获取。完整清单见 `STREAMS.md`。
 
@@ -47,19 +46,19 @@ https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sourc
 
 以下三个 jar 为**第三方 / 原作者**提供，**本仓库仅收录备份**，其原始地址如下：
 
-| 源 | 说明 | 原始地址（不一定是官方）  |
-| --- | --- | --- |
-| ting29 | 听书网合集（29听书 / 恋听 / 乐听 / 麒麟 / 275 / 有听 / 听13 / 爱听书） | https://github.com/liaozhu913/tingshu-ting29-source |
-| eprendre | 原作者 eprendre 维护的多站听书 / 电台合集（哔哩哔哩、懒人听书、酷我、CCTV 等 33 个源） | http://ywbk.cc/306.html |
-| shun | 原作者生态下的第三方整合听书源 | http://ywbk.cc/306.html |
+| 源        | 说明                                                     | 原始地址（不一定是官方）                                          |
+| -------- | ------------------------------------------------------ | ----------------------------------------------------- |
+| ting29   | 听书网合集（29听书 / 恋听 / 乐听 / 麒麟 / 275 / 有听 / 听13 / 爱听书）      | <https://github.com/liaozhu913/tingshu-ting29-source> |
+| eprendre | 原作者 eprendre 维护的多站听书 / 电台合集（哔哩哔哩、懒人听书、酷我、CCTV 等 33 个源） | <http://ywbk.cc/306.html>                             |
+| shun     | 原作者生态下的第三方整合听书源                                        | <http://ywbk.cc/306.html>                             |
 
 对应订阅入口（**在 App「自定义源管理 → 添加订阅」中直接填入下方 raw 地址即可**）：
 
-| 源 | 订阅地址（复制到 App 订阅框） | 本地文件（jar + json） |
-| --- | --- | --- |
-| ting29 | `https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_ting29.json` | `sources_by_ting29.jar` + `external_sources_ting29.json` |
+| 源        | 订阅地址（复制到 App 订阅框）                                                                                  | 本地文件（jar + json）                                             |
+| -------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| ting29   | `https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_ting29.json`   | `sources_by_ting29.jar` + `external_sources_ting29.json`     |
 | eprendre | `https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_eprendre.json` | `sources_by_eprendre.jar` + `external_sources_eprendre.json` |
-| shun | `https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_shun.json` | `sources_by_shun.jar` + `external_sources_shun.json` |
+| shun     | `https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sources_shun.json`     | `sources_by_shun.jar` + `external_sources_shun.json`         |
 
 > 说明：eprendre / shun 原作者项目已**停止维护**（源码大部分失效），本仓库仅作存档与离线备用；ting29 仍由其作者维护，本仓库仅做备份。
 
@@ -67,9 +66,9 @@ https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sourc
 
 ## 三、App 获取与参考来源
 
-本仓库的源需配合《我的听书》App（包名 `com.github.eprendre.tingshu`）使用。本仓库所使用的 App 安装包获取自：https://pan.lanzoux.com/b873905 （官方托管地址）。
+本仓库的源需配合《我的听书》App（包名 `com.github.eprendre.tingshu`）使用。本仓库所使用的 App 安装包获取自：<https://pan.lanzoux.com/b873905> （官方托管地址）。
 
-自定义源编写所参考的原作者框架与示例，见第一节「参考与致谢」：https://github.com/eprendre/tingshu 。
+自定义源编写所参考的原作者框架与示例，见第一节「参考与致谢」：<https://github.com/eprendre/tingshu> 。
 
 ---
 
@@ -77,5 +76,5 @@ https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/external_sourc
 
 1. 本仓库所有内容**仅供个人学习、研究与非商业的自用目的**，请勿用于任何商业用途或大规模分发。
 2. 第三方 jar 包（ting29 / eprendre / shun）的著作权归**各自原作者**所有，本仓库仅做备份收录与离线导入便利，**不主张任何权利**，亦不承担其维护责任；如原作者要求移除，将立即下架。
-3. 本仓库自维护的 luov 源所聚合的媒体内容（哔哩哔哩视频，中央广播电视总台 / 央广 / 国广、江西 / 湖南 / 南昌等各地广播电视台的直播与伴音流）其**版权均归原作者 / 原始平台（B 站、中央广播电视总台及各地广电等）所有**；本源仅提供内容索引与播放链路解析，**不存储、不转码、不重新分发任何受版权保护的内容**，亦不构成对任一平台版权的侵犯。
+3. 本仓库自维护的 luov 源所聚合的媒体内容（哔哩哔哩视频，中央广播电视总台、各地广播电视台的直播与伴音流）其**版权均归原作者 / 原始平台（B 站、中央广播电视总台及各地广电等）所有**；本源仅提供内容索引与播放链路解析，**不存储、不转码、不重新分发任何受版权保护的内容**，亦不构成对任一平台版权的侵犯。
 4. 使用本仓库任何源即表示你已知晓并同意上述条款；因使用本仓库内容产生的任何后果由使用者自行承担。
