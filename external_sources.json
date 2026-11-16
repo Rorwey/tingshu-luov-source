@@ -1,7 +1,7 @@
 {
-    "version": 15,
+    "version": 16,
     "entry_package": "sources_by_luov",
     "download_url": "https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/sources_by_luov.jar",
-    "update_msg": "听书+直播源 v15（移除电视源·仅留 B站+广播）：① 整体移除 LocalTV 电视源——央视音频版 CDN 实测不可达、南昌 1/2/3 视频流实测失效，且各省级官网真视频流多为 ChinaDRM 加密或播放 CDN 返回 403，无稳定可播电视内容；② 现源内仅保留两项：BiliBili（哔哩·新，搜索/分类/多P+合集连播）与 CNR（央广/国广 国家广播19套 + 地方广播 31 省，含湖南/江西省市级电台）；③ 广播源（v14 已重排：省台优先+地市车牌序、修复海南/广西对调）与台标（蜻蜓封面全量校验 OK）均不变。",
+    "update_msg": "听书+直播源 v16（修复蜻蜓 .ts 切片 + 新增听听FM回听）：① 修复大量市级广播突然播不了——蜻蜓近期把所有 /64k 直播清单的默认切片从 .aac 改成了 .ts（video/mp2t），APP 纯音频播放器解不了；现统一给清单加 ?format=aac 强制取回 .aac 音频分片，问题台（九江交通/九江新闻900/赣北之声/抚州新闻等）与全部对照台实测生效；② 新增独立源「听听FM·广播回听」——免费广播节目往期点播，搜索框粘贴分享链接或 11 位节目 ID 即可导入，分类内置北京交通广播节目表；不含 VIP 付费内容；③ B站源与 tv 源状态不变。",
     "support_url": ""
 }
