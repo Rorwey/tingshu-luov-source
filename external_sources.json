@@ -1,7 +1,7 @@
 {
-    "version": 18,
+    "version": 19,
     "entry_package": "sources_by_luov",
     "download_url": "https://raw.githubusercontent.com/Rorwey/tingshu-luov-source/main/sources_by_luov.jar",
-    "update_msg": "听书+直播源 v18（听听FM源完善：全量广播+免费专辑+搜索）：① 从听听FM H5 的懒加载 chunk 逆向出搜索接口 /search/search_list_v4（关键词返回电台/节目/专辑/音频/话题/直播六类）与 /search/search_row_v4（分类分页+apt游标）；② 新增「电台广场」分类——空关键词 type=3 分页可列出全国 60+ 广播频率，点进去把当天+昨天节目表展开成可连播的回听集；③ 新增「免费专辑」分类——type=1 分页列专辑，专辑详情/集列表走 album 接口，按 is_free/is_buy 过滤付费集；④ 搜索框现在输入任意关键词即可搜四类内容，也仍支持粘贴分享链接或 11 位 ID 直接导入；⑤ 新增热搜词分类。只做免费内容，VIP 不碰。v16/v17 的广播 .aac 修复与「听书2」分类均保留。",
+    "update_msg": "听书+直播源 v19（听听FM分类调整）：把原来单个「北京交通广播」tab 替换为 7 个北京广播台的节目回听入口，按交通/新闻/音乐/文艺/副中心/京津冀/听听FM 顺序排列；每个 tab 的电台 ID 均由搜索接口实测拿到、节目表实测非空（交通27档、新闻34、音乐20、文艺31、副中心25、京津冀23、听听FM1）。「电台广场」tab 按用户要求暂留，待升级验证后再决定是否取消；热搜节目、免费专辑、搜索、分享链接导入均不变。v16 的广播 .aac 修复、v17「听书2」分类、v18 全量广播/专辑能力全部保留。",
     "support_url": ""
 }
